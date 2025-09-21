@@ -1,40 +1,40 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
-//Ğı×ª½Ç¶È¾ùÎªË³Ê±ÕëĞı×ª
-void InitSquare(int(*Square)[4]);//³õÊ¼»¯·½¿é
-void ModeSpinSquare(int(*Square)[4], char mode, int spin);//ÓÃÓÚ»ñÈ¡Ğı×ªºóµÄ·½¿éĞÎ×´
-void AddSquare(int (*Square)[4], int (*Area)[20], int index);//·½¿é¶Ñµş
-void Move(int (*Area)[20]);//Ïû³ıÏÂÂä
-int Remove(int (*Area)[20]);//¼ÆËãµÃ·Ö
-int GameoverJudge(int (*Area)[20]);//½áÊøÅĞ¶Ï
-int AssessScore(int (*Area)[20], int spin, char mode, int index);//ÓÃÓÚÆÀ¹À
-void ShowArea(int index, int spin, int score, int (*Area)[20]);//ÏÔÊ¾µ±Ç°ÓÎÏ·ÇøÓò×´Ì¬
+//æ—‹è½¬è§’åº¦å‡ä¸ºé¡ºæ—¶é’ˆæ—‹è½¬
+void InitSquare(int(*Square)[4]);//åˆå§‹åŒ–æ–¹å—
+void ModeSpinSquare(int(*Square)[4], char mode, int spin);//ç”¨äºè·å–æ—‹è½¬åçš„æ–¹å—å½¢çŠ¶
+void AddSquare(int (*Square)[4], int (*Area)[20], int index);//æ–¹å—å †å 
+void Move(int (*Area)[20]);//æ¶ˆé™¤ä¸‹è½
+int Remove(int (*Area)[20]);//è®¡ç®—å¾—åˆ†
+int GameoverJudge(int (*Area)[20]);//ç»“æŸåˆ¤æ–­
+int AssessScore(int (*Area)[20], int spin, char mode, int index);//ç”¨äºè¯„ä¼°
+void ShowArea(int index, int spin, int score, int (*Area)[20]);//æ˜¾ç¤ºå½“å‰æ¸¸æˆåŒºåŸŸçŠ¶æ€
 int main()
 {
-	char mode;//ÓÃÓÚ¼ÇÂ¼·½¿éĞÎ×´
-	char mode1;//ÓÃÓÚ¼ÇÂ¼×î¿ªÊ¼µÄµÚÒ»¸ö·½¿é
-	int spin;//ÓÃÓÚ¼ÇÂ¼Ğı×ª·½Ê½
-	int index;//ÓÃÓÚ¼ÇÂ¼·½¿é·ÅÖÃÎ»ÖÃ
-	int score = 0;//ÓÃÓÚ¼ÇÂ¼µÃ·Ö
-	int Area[10][20];//ÓÎÏ·ÇøÓò
+	char mode;//ç”¨äºè®°å½•æ–¹å—å½¢çŠ¶
+	char mode1;//ç”¨äºè®°å½•æœ€å¼€å§‹çš„ç¬¬ä¸€ä¸ªæ–¹å—
+	int spin;//ç”¨äºè®°å½•æ—‹è½¬æ–¹å¼
+	int index;//ç”¨äºè®°å½•æ–¹å—æ”¾ç½®ä½ç½®
+	int score = 0;//ç”¨äºè®°å½•å¾—åˆ†
+	int Area[10][20];//æ¸¸æˆåŒºåŸŸ
 	for (int i = 0;i < 10;i++)
 	{
 		for (int j = 0;j < 20;j++)
 		{
 			Area[i][j] = 0;
 		}
-	}//½¨Á¢²¢³õÊ¼»¯·ÅÖÃ·½¿éÇøÓò
-	int Square[4][4];//ÓÃÓÚ´æ·Å·½¿é
+	}//å»ºç«‹å¹¶åˆå§‹åŒ–æ”¾ç½®æ–¹å—åŒºåŸŸ
+	int Square[4][4];//ç”¨äºå­˜æ”¾æ–¹å—
 	scanf("%c", &mode1);
 	scanf("%c", &mode);
 	while (GameoverJudge(Area))
 	{
 		int Score = -100000000;
-		int arr[4] = { 0,270,180,90 };//ÓÃÓÚ´¢´æ½Ç¶È²ÎÊı
+		int arr[4] = { 0,270,180,90 };//ç”¨äºå‚¨å­˜è§’åº¦å‚æ•°
 
 		for (int j = 0;j < 4;j++)
 		{
-			int max = 0;
+			int max = 0;//ç”¨äºç¡®å®šå¯æ”¾ç½®è¾¹ç•Œ
 			switch (mode1)
 			{
 			case 'I':
@@ -205,7 +205,7 @@ int AssessScore(int (*Area)[20], int spin, char mode, int index)
 	}
 	AddSquare(Square, area, index);
 	int count[10] = { 0,0,0,0,0,0,0,0,0,0 };
-	for (int i = 0;i < 10;i++)//ÀûÓÃ¸ß¶È²î¼°¸ß¶ÈÀ´¼õ·Ö
+	for (int i = 0;i < 10;i++)//åˆ©ç”¨é«˜åº¦å·®åŠé«˜åº¦æ¥å‡åˆ†
 	{
 		for (int j = 19;j >= 0;j--)
 		{
@@ -216,7 +216,7 @@ int AssessScore(int (*Area)[20], int spin, char mode, int index)
 			}
 		}
 	}
-	for (int i = 0;i < 10;i++)//ÀûÓÃ¿Õ¶´¼õ·Ö
+	for (int i = 0;i < 10;i++)//åˆ©ç”¨ç©ºæ´å‡åˆ†
 	{
 		int state = 0;
 		for (int j = 19;j >= 0;j--)
@@ -227,19 +227,19 @@ int AssessScore(int (*Area)[20], int spin, char mode, int index)
 			}
 			if (state == 1 && area[i][j] == 0)
 			{
-				score = score - 50;//100Îª¶´µÄ²ÎÊı
+				score = score - 50;//100ä¸ºæ´çš„å‚æ•°
 			}
 		}
 	}
 	for (int i = 0;i < 10;i++)
 	{
-		score = score - 2 * count[i];//2Îª¸ß¶ÈµÄ²ÎÊı
+		score = score - 2 * count[i];//2ä¸ºé«˜åº¦çš„å‚æ•°
 	}
 	for (int i = 0;i < 9;i++)
 	{
 		if (count[i] >= count[i + 1])
 		{
-			score = score - 10 * (count[i] - count[i + 1]);//10Îª¸ß¶È²îµÄ²ÎÊı
+			score = score - 10 * (count[i] - count[i + 1]);//10ä¸ºé«˜åº¦å·®çš„å‚æ•°
 		}
 		else
 		{
@@ -284,7 +284,7 @@ int AssessScore(int (*Area)[20], int spin, char mode, int index)
 }
 
 
-int GameoverJudge(int (*Area)[20])//·µ»Ø0±íÊ¾½áÊø£¬·µ»Ø1±íÊ¾¼ÌĞø
+int GameoverJudge(int (*Area)[20])//è¿”å›0è¡¨ç¤ºç»“æŸï¼Œè¿”å›1è¡¨ç¤ºç»§ç»­
 {
 	for (int i = 0;i < 10;i++)
 	{
@@ -297,8 +297,8 @@ int GameoverJudge(int (*Area)[20])//·µ»Ø0±íÊ¾½áÊø£¬·µ»Ø1±íÊ¾¼ÌĞø
 		}
 	}
 	return 1;
-}//ÅĞ¶ÏÊÇ·ñ³¬³ö¸ß¶ÈÏŞÖÆ
-void Move(int (*Area)[20])//ÓÃÓÚÔÚÏû³ıºóÒÆ¶¯·½¿é
+}//åˆ¤æ–­æ˜¯å¦è¶…å‡ºé«˜åº¦é™åˆ¶
+void Move(int (*Area)[20])//ç”¨äºåœ¨æ¶ˆé™¤åç§»åŠ¨æ–¹å—
 {
 	for (int j = 0;j < 15;j++)
 	{
@@ -321,9 +321,9 @@ void Move(int (*Area)[20])//ÓÃÓÚÔÚÏû³ıºóÒÆ¶¯·½¿é
 			}
 		}
 	}
-}//ÓÃÓÚÊµÏÖÏû³ıºóµÄÏÂÂä
+}//ç”¨äºå®ç°æ¶ˆé™¤åçš„ä¸‹è½
 
-int Remove(int (*Area)[20])//·µ»ØÖµÎªµÃ·Ö
+int Remove(int (*Area)[20])//è¿”å›å€¼ä¸ºå¾—åˆ†
 {
 	int count = 0;
 	int score;
@@ -360,13 +360,13 @@ int Remove(int (*Area)[20])//·µ»ØÖµÎªµÃ·Ö
 		break;
 	}
 	return score;
-}//ÓÃÓÚ¼ÆËãÒ»´ÎÏû³ıÖĞµÄµÃ·Ö
+}//ç”¨äºè®¡ç®—ä¸€æ¬¡æ¶ˆé™¤ä¸­çš„å¾—åˆ†
 
 
 
 void AddSquare(int (*Square)[4], int (*Area)[20], int index)
 {
-	for (int i = 15;i >= 1;i--)//i±íÊ¾·½¿é×îÏÂÃæÒ»ĞĞËùÔÚµÄĞĞ
+	for (int i = 15;i >= 1;i--)//iè¡¨ç¤ºæ–¹å—æœ€ä¸‹é¢ä¸€è¡Œæ‰€åœ¨çš„è¡Œ
 	{
 		for (int t = i;t < i + 4;t++)
 		{
@@ -402,7 +402,7 @@ void AddSquare(int (*Square)[4], int (*Area)[20], int index)
 		}
 	}
 	return;
-}//ÓÃÓÚÊµÏÖ·½¿é¶Ñµş,·µ»ØÖµÓÃÓÚ½áÊøº¯Êı£¬ÎŞÊµ¼ÊÒâÒå
+}//ç”¨äºå®ç°æ–¹å—å †å ,è¿”å›å€¼ç”¨äºç»“æŸå‡½æ•°ï¼Œæ— å®é™…æ„ä¹‰
 
 void InitSquare(int(*Square)[4])
 {
@@ -413,7 +413,7 @@ void InitSquare(int(*Square)[4])
 			Square[i][j] = 0;
 		}
 	}
-}//³õÊ¼»¯·½¿éÊı×é
+}//åˆå§‹åŒ–æ–¹å—æ•°ç»„
 void ModeSpinSquare(int(*Square)[4], char mode, int spin)
 {
 	if (spin == 0)
@@ -608,14 +608,14 @@ void ModeSpinSquare(int(*Square)[4], char mode, int spin)
 			break;
 		}
 	}
-}//»ñÈ¡Ğı×ªºóµÄ·½¿éĞÎ×´
+}//è·å–æ—‹è½¬åçš„æ–¹å—å½¢çŠ¶
 void ShowArea(int index, int spin, int score, int (*Area)[20])
 {
 	printf("%d %d\n", spin / 90, index);
-	//Ë¢ĞÂ»º³åÇø
+	//åˆ·æ–°ç¼“å†²åŒº
 	fflush(stdout);
 	printf("%d\n", score);
-	//Ë¢ĞÂ»º³åÇø
+	//åˆ·æ–°ç¼“å†²åŒº
 	fflush(stdout);
 	for (int j = 19;j >= 0;j--)
 	{
